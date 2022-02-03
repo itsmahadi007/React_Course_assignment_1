@@ -4,8 +4,15 @@ import './App.css';
 
 import data from "./component/data";
 // import Nav from "./component/nav";
-// import Product_details from "./component/product_details";
-// import Product_pages from "./component/product_pages";
+import Product_details from "./component/product_details";
+import Product_pages from "./component/product_pages";
+
+import {render} from "react-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route
+} from "react-router-dom";
 
 class App extends Component {
     state = {
@@ -21,20 +28,14 @@ class App extends Component {
 
         return <div>
 
-            <div className="users">
-                {data.map((user, index) => (
-                    <div key={index}>
-                        <div className="card" >
-                            <div className="card-body">
-                                <h3 className="card-title">{user.name}</h3>
-                                <p className="card-text">{user.description}</p>
-                                <h5 className="card-title">{user.price}</h5>
-                                <button href="#" className="btn btn-primary">View</button>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <BrowserRouter>
+                <Routes>
+                    {/*<Route path="/" element={<Home/>}/>*/}
+
+                    <Route path="/" element={<Product_pages/>}/>
+                    <Route path="/Product_details" element={<Product_details/>}/>
+                </Routes>
+            </BrowserRouter>,
 
 
         </div>
